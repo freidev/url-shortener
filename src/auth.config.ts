@@ -5,6 +5,8 @@ import Google from "next-auth/providers/google";
 import { env } from "./env.mjs";
 
 export default {
+  trustHost: true,
+  secret: env.AUTH_SECRET,
   providers: [
     Google({
       clientId: env.GOOGLE_ID,
