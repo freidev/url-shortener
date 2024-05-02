@@ -17,7 +17,7 @@ export const {
 } = NextAuth({
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },
-  basePath: `${env.NEXT_BASE_URL}/api/auth`,
+  basePath: `/api/auth`,
   secret: env.AUTH_SECRET,
   pages: {
     signIn: "/auth",
