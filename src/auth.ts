@@ -1,12 +1,12 @@
-import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
+import NextAuth from "next-auth";
 
-import { db } from "@/server/db";
 import authConfig from "@/auth.config";
-import { getUserById } from "./server/utils/user";
-import { getTwoFactorConfirmationByUserId } from "./server/utils/two-factor-confirm";
-import { getAccountByUserId } from "./server/utils/account";
+import { db } from "@/server/db";
 import { env } from "./env.mjs";
+import { getAccountByUserId } from "./server/utils/account";
+import { getTwoFactorConfirmationByUserId } from "./server/utils/two-factor-confirm";
+import { getUserById } from "./server/utils/user";
 
 export const {
   handlers: { GET, POST },
@@ -17,7 +17,7 @@ export const {
 } = NextAuth({
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },
-  basePath: "/api/auth",
+  basePath: `${env.NEXT_BASE_URL}/api/auth`,
   secret: env.AUTH_SECRET,
   pages: {
     signIn: "/auth",
