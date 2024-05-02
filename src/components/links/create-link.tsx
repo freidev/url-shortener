@@ -1,17 +1,18 @@
 "use client";
 
-import type { z } from "zod";
 import type { Tags } from "@prisma/client";
+import type { z } from "zod";
 
 import { CreateLinkSchema } from "@/server/schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import JSConfetti from "js-confetti";
 import { useState, type ReactNode } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { zodResolver } from "@hookform/resolvers/zod";
-import JSConfetti from "js-confetti";
 
 import { checkIfSlugExist, createLink } from "@/server/actions/links";
 
+import { insertTagToLink } from "@/server/actions/tags";
 import Alert from "@/ui/alert";
 import { Button } from "@/ui/button";
 import {
@@ -33,7 +34,6 @@ import {
 } from "@/ui/form";
 import { Input, Textarea } from "@/ui/input";
 import { LoaderIcon, RocketIcon, ShuffleIcon, TagsIcon } from "lucide-react";
-import { insertTagToLink } from "@/server/actions/tags";
 import SelectTagsLink from "./select-tags-link";
 
 interface CreateLinkProps {
@@ -115,7 +115,7 @@ export function CreateLink(props: CreateLinkProps) {
       }
 
       toast.success("Link created successfully", {
-        description: `Url: https://slug.vercel.app/${values.slug}`,
+        description: `Url: https://link.bernabe.dev/${values.slug}`,
         duration: 10000,
         closeButton: true,
       });

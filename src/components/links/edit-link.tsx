@@ -10,6 +10,9 @@ import { toast } from "sonner";
 
 import { updateLink } from "@/server/actions/links";
 
+import { EditLinkSchema } from "@/server/schemas";
+import Alert from "@/ui/alert";
+import { Button } from "@/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -20,9 +23,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/ui/dialog";
-import { Button } from "@/ui/button";
-import { LoaderIcon, LockIcon, LockOpenIcon, SaveIcon } from "lucide-react";
-import Alert from "@/ui/alert";
 import {
   Form,
   FormControl,
@@ -32,8 +32,8 @@ import {
   FormMessage,
 } from "@/ui/form";
 import { Input, Textarea } from "@/ui/input";
-import { EditLinkSchema } from "@/server/schemas";
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
+import { LoaderIcon, LockIcon, LockOpenIcon, SaveIcon } from "lucide-react";
 
 interface EditLinkProps {
   trigger: ReactNode;
@@ -76,7 +76,7 @@ const EditLink = (props: EditLinkProps) => {
 
       // If not any changes in the tags, return:
       toast.success("Link edited successfully.", {
-        description: `Url: https://slug.vercel.app/${values.slug}`,
+        description: `Url: https://link.bernabe.dev/${values.slug}`,
         duration: 10000,
         closeButton: true,
       });

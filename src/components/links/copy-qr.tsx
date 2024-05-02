@@ -3,6 +3,7 @@
 import type { Links } from "@prisma/client";
 import QRCode from "react-qr-code";
 
+import { Button } from "@/ui/button";
 import {
   DialogClose,
   DialogContent,
@@ -11,14 +12,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/ui/dialog";
-import { Button } from "@/ui/button";
-import { DownloadIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/ui/dropdown-menu";
+import { DownloadIcon } from "lucide-react";
 
 interface CopyQRProps {
   linkInfo: Links;
@@ -65,7 +65,7 @@ const CopyQR = ({ linkInfo }: CopyQRProps) => {
             id="qr-code"
             size={128}
             style={{ height: "auto" }}
-            value={`https://slug.vercel.app/${linkInfo.slug}`}
+            value={`https://link.bernabe.dev/${linkInfo.slug}`}
             viewBox={`0 0 128 128`}
           />
         </div>
